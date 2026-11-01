@@ -1,0 +1,25 @@
+name: Project Setup Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  setup-project:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. Create the project directory and three files inside it
+      - name: Create project directory and files
+        run: |
+          mkdir -p project
+          touch project/index.html project/style.css project/script.js
+
+      # 3. Display the list of files created inside the directory
+      - name: List files inside project directory
+        run: ls -l project
